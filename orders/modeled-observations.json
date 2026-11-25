@@ -1,0 +1,11 @@
+{
+  "alice/read/B2": {
+    "body": {"detail": "Order not found", "order": {"id": "B2", "owner": "bob", "item": "lamp", "status": "open"}}
+  },
+  "bob/hold/B2": {
+    "state": {
+      "A1": {"id": "A1", "owner": "alice", "item": "notebook", "status": "open"},
+      "B2": {"id": "B2", "owner": "bob", "item": "lamp", "status": "held"}
+    }
+  }
+}

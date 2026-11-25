@@ -1,0 +1,12 @@
+name: Verify contract
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t order-contract .
+      - run: docker run --rm order-contract python -m pytest -q -p no:cacheprovider
+      - run: docker run --rm order-contract

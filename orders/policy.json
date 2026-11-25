@@ -1,0 +1,5 @@
+{
+  "guest": {"read": "none", "hold": "none"},
+  "customer": {"read": "own", "hold": "none"},
+  "administrator": {"read": "all", "hold": "all"}
+}

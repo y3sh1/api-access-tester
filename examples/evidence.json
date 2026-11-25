@@ -1,0 +1,2104 @@
+{
+  "modeled_baseline": [
+    {
+      "case": {
+        "actor": "alice",
+        "action": "read",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 200,
+        "body": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "alice",
+        "action": "read",
+        "order_id": "B2"
+      },
+      "passed": false,
+      "mismatches": [
+        "body"
+      ],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 404,
+        "body": {
+          "detail": "Order not found"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 404,
+        "body": {
+          "detail": "Order not found",
+          "order": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "alice",
+        "action": "hold",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "alice",
+        "action": "hold",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "bob",
+        "action": "read",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 404,
+        "body": {
+          "detail": "Order not found"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 404,
+        "body": {
+          "detail": "Order not found"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "bob",
+        "action": "read",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 200,
+        "body": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "bob",
+        "action": "hold",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "bob",
+        "action": "hold",
+        "order_id": "B2"
+      },
+      "passed": false,
+      "mismatches": [
+        "state"
+      ],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "held"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "admin",
+        "action": "read",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 200,
+        "body": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "admin",
+        "action": "read",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 200,
+        "body": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "admin",
+        "action": "hold",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 200,
+        "body": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "held"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "held"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "held"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "held"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "admin",
+        "action": "hold",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 200,
+        "body": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "held"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "held"
+          }
+        }
+      },
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "held"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "held"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "guest",
+        "action": "read",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "guest",
+        "action": "read",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "guest",
+        "action": "hold",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "guest",
+        "action": "hold",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    }
+  ],
+  "protected_app": [
+    {
+      "case": {
+        "actor": "alice",
+        "action": "read",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 200,
+        "body": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "alice",
+        "action": "read",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 404,
+        "body": {
+          "detail": "Order not found"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 404,
+        "body": {
+          "detail": "Order not found"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "alice",
+        "action": "hold",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "alice",
+        "action": "hold",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "bob",
+        "action": "read",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 404,
+        "body": {
+          "detail": "Order not found"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 404,
+        "body": {
+          "detail": "Order not found"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "bob",
+        "action": "read",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 200,
+        "body": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "bob",
+        "action": "hold",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "bob",
+        "action": "hold",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 403,
+        "body": {
+          "detail": "Forbidden"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "admin",
+        "action": "read",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 200,
+        "body": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "admin",
+        "action": "read",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 200,
+        "body": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "admin",
+        "action": "hold",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 200,
+        "body": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "held"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "held"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "held"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "held"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "admin",
+        "action": "hold",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 200,
+        "body": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "held"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "held"
+          }
+        }
+      },
+      "observed": {
+        "status": 200,
+        "body": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "held"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "held"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "guest",
+        "action": "read",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "guest",
+        "action": "read",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "guest",
+        "action": "hold",
+        "order_id": "A1"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "actor": "guest",
+        "action": "hold",
+        "order_id": "B2"
+      },
+      "passed": true,
+      "mismatches": [],
+      "before": {
+        "A1": {
+          "id": "A1",
+          "owner": "alice",
+          "item": "notebook",
+          "status": "open"
+        },
+        "B2": {
+          "id": "B2",
+          "owner": "bob",
+          "item": "lamp",
+          "status": "open"
+        }
+      },
+      "expected": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      },
+      "observed": {
+        "status": 401,
+        "body": {
+          "detail": "Sign in"
+        },
+        "state": {
+          "A1": {
+            "id": "A1",
+            "owner": "alice",
+            "item": "notebook",
+            "status": "open"
+          },
+          "B2": {
+            "id": "B2",
+            "owner": "bob",
+            "item": "lamp",
+            "status": "open"
+          }
+        }
+      }
+    }
+  ]
+}
