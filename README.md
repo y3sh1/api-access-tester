@@ -46,7 +46,7 @@ The protected column below comes from invoking the FastAPI app. The baseline reu
 | Alice reads B2 | 404 with only the error message | 404 body also contains Bob's lamp order | 404 with only the error |
 | Bob puts B2 on hold | 403 and both orders stay open | 403 and B2 changes to held | 403 and B2 stays open |
 
-The fixture also includes authorized reads and holds so an implementation that denies every request will fail. The demo exits with status 1 on a protected-service mismatch. Full per-case expected and observed bodies and state are in [the recorded JSON report](examples/evidence.json).
+The 16-case matrix also includes authorized reads and holds so an implementation that denies every request will fail. The demo exits with status 1 on a protected-service mismatch. If the app returns an empty or non-JSON body, the report retains the status, content type, body size and a preview of up to 512 bytes. Full per-case results are in [the recorded JSON report](examples/evidence.json).
 
 ## Run the API manually
 

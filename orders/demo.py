@@ -12,6 +12,17 @@ from .contract import cases, evaluate
 from .service import USERS, create_service
 
 
+def observed_body(response):
+    try:
+        return response.json()
+    except ValueError:
+        preview = response.content[:512]
+        return {"content_type": response.headers.get("content-type", "")[:128],
+                "text_preview": preview.decode("utf-8", errors="replace"),
+                "byte_length": len(response.content),
+                "truncated": len(preview) < len(response.content)}
+
+
 async def run():
     baseline = json.loads(Path(__file__).with_name("modeled-observations.json").read_text(encoding="utf-8"))
     tokens = {name: secrets.token_urlsafe(24) for name in USERS}
@@ -20,12 +31,13 @@ async def run():
         app = create_service({token: name for name, token in tokens.items()})
         before = deepcopy(app.state.orders)
         headers = {"Authorization": "Bearer " + tokens[case.actor]} if case.actor in tokens else {}
-        async with httpx.AsyncClient(transport=httpx.ASGITransport(app), base_url="http://fixture") as client:
+        transport = httpx.ASGITransport(app, raise_app_exceptions=False)
+        async with httpx.AsyncClient(transport=transport, base_url="http://fixture") as client:
             if case.action == "read":
                 response = await client.get(f"/orders/{case.order_id}", headers=headers)
             else:
                 response = await client.post(f"/admin/orders/{case.order_id}/hold", headers=headers)
-        actual = {"status": response.status_code, "body": response.json(), "state": deepcopy(app.state.orders)}
+        actual = {"status": response.status_code, "body": observed_body(response), "state": deepcopy(app.state.orders)}
         fixed.append(evaluate(case, before, actual))
         previous = deepcopy(actual)
         previous.update(baseline.get(case.name, {}))
